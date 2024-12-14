@@ -17,26 +17,26 @@ const typed = new Typed(".typed", {
 });
 
 // hero-styles
-const likes = [
-  "aprender cosas nuevas",
-  "resolver problemas",
-  "trabajar en equipo",
-];
-let i = 0;
+// const likes = [
+//   "aprender cosas nuevas",
+//   "resolver problemas",
+//   "trabajar en equipo",
+// ];
+// let i = 0;
 
-const like = () => {
-  if (i === likes.length - 1) {
-    i = 0;
-  } else {
-    i++;
-  }
-  document.getElementById("likes").innerHTML = likes[i];
-};
-like();
+// const like = () => {
+//   if (i === likes.length - 1) {
+//     i = 0;
+//   } else {
+//     i++;
+//   }
+//   document.getElementById("likes").innerHTML = likes[i];
+// };
+// like();
 
-setInterval(() => {
-  like();
-}, 1500);
+// setInterval(() => {
+//   like();
+// }, 1500);
 
 // Year
 const span = document.getElementById("year");
@@ -53,10 +53,10 @@ barra.addEventListener("click", function () {
   menuMobile.classList.toggle("line");
 });
 
-const startMenu = document.getElementById("start-menu");
-const aboutMeMenu = document.getElementById("about-me-menu");
-const proyectsMenu = document.getElementById("proyects-menu");
-const habilityMenu = document.getElementById("hability-menu");
+// const startMenu = document.getElementById("start-menu");
+// const aboutMeMenu = document.getElementById("about-me-menu");
+// const proyectsMenu = document.getElementById("proyects-menu");
+// const habilityMenu = document.getElementById("hability-menu");
 const contactMenu = document.getElementById("contact-menu");
 
 function scrollDistance(e, element) {
@@ -78,54 +78,61 @@ function scrollToReference(e, element) {
   menuMobile.classList.toggle("line");
 }
 
-startMenu.addEventListener("click", (e) => {
-  scrollToReference(e, startMenu);
-});
-aboutMeMenu.addEventListener("click", (e) => {
-  scrollToReference(e, aboutMeMenu);
-});
-proyectsMenu.addEventListener("click", (e) => {
-  scrollToReference(e, proyectsMenu);
-});
-habilityMenu.addEventListener("click", (e) => {
-  scrollToReference(e, habilityMenu);
-});
+// startMenu.addEventListener("click", (e) => {
+//   scrollToReference(e, startMenu);
+// });
+// aboutMeMenu.addEventListener("click", (e) => {
+//   scrollToReference(e, aboutMeMenu);
+// });
+// proyectsMenu.addEventListener("click", (e) => {
+//   scrollToReference(e, proyectsMenu);
+// });
+// habilityMenu.addEventListener("click", (e) => {
+//   scrollToReference(e, habilityMenu);
+// });
 contactMenu.addEventListener("click", (e) => {
   scrollToReference(e, contactMenu);
 });
 
 //Scroll
-const start = document.querySelectorAll(".start");
-const aboutMe = document.querySelectorAll(".aboutMe");
-const proyects = document.querySelectorAll(".proyects");
-const hability = document.querySelectorAll(".hability");
+// const start = document.querySelectorAll(".start");
+// const aboutMe = document.querySelectorAll(".aboutMe");
+// const proyects = document.querySelectorAll(".proyects");
+// const hability = document.querySelectorAll(".hability");
 const contact = document.querySelectorAll(".contact");
+const trigonometria = document.querySelectorAll(".trigonometria");
 
-start.forEach((st) => {
-  st.addEventListener("click", (e) => {
-    scrollDistance(e, st);
-  });
-});
+// start.forEach((st) => {
+//   st.addEventListener("click", (e) => {
+//     scrollDistance(e, st);
+//   });
+// });
 
-aboutMe.forEach((st) => {
-  st.addEventListener("click", (e) => {
-    scrollDistance(e, st);
-  });
-});
+// aboutMe.forEach((st) => {
+//   st.addEventListener("click", (e) => {
+//     scrollDistance(e, st);
+//   });
+// });
 
-proyects.forEach((st) => {
-  st.addEventListener("click", (e) => {
-    scrollDistance(e, st);
-  });
-});
+// proyects.forEach((st) => {
+//   st.addEventListener("click", (e) => {
+//     scrollDistance(e, st);
+//   });
+// });
 
-hability.forEach((st) => {
-  st.addEventListener("click", (e) => {
-    scrollDistance(e, st);
-  });
-});
+// hability.forEach((st) => {
+//   st.addEventListener("click", (e) => {
+//     scrollDistance(e, st);
+//   });
+// });
 
 contact.forEach((st) => {
+  st.addEventListener("click", (e) => {
+    scrollDistance(e, st);
+  });
+});
+
+trigonometria.forEach((st) => {
   st.addEventListener("click", (e) => {
     scrollDistance(e, st);
   });
@@ -151,7 +158,7 @@ particlesJS({
       value: 100,
       density: {
         enable: true,
-        value_area: 800,
+        value_area: 900,
       },
     },
     color: {
@@ -216,3 +223,7 @@ particlesJS({
   },
   retina_detect: true,
 });
+
+
+
+
