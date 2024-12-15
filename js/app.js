@@ -50,14 +50,20 @@ const menuMobile = document.querySelector(".menu-mobile");
 
 barra.addEventListener("click", function () {
   menuSide.classList.toggle("active");
-  menuMobile.classList.toggle("line");
+  // menuMobile.classList.toggle("line");
 });
 
 // const startMenu = document.getElementById("start-menu");
 // const aboutMeMenu = document.getElementById("about-me-menu");
 // const proyectsMenu = document.getElementById("proyects-menu");
 // const habilityMenu = document.getElementById("hability-menu");
+const latexMenu = document.getElementById("latex-menu");
+const fisicaMenu = document.getElementById("fisica-menu");
+const algebraMenu = document.getElementById("algebra-menu");
+const geometriaMenu = document.getElementById("geometria-menu");
+const trigonometriaMenu = document.getElementById("trigonometria-menu");
 const contactMenu = document.getElementById("contact-menu");
+
 
 function scrollDistance(e, element) {
   e.preventDefault();
@@ -75,7 +81,7 @@ function scrollDistance(e, element) {
 function scrollToReference(e, element) {
   scrollDistance(e, element);
   menuSide.classList.toggle("active");
-  menuMobile.classList.toggle("line");
+  // menuMobile.classList.toggle("line");
 }
 
 // startMenu.addEventListener("click", (e) => {
@@ -90,6 +96,21 @@ function scrollToReference(e, element) {
 // habilityMenu.addEventListener("click", (e) => {
 //   scrollToReference(e, habilityMenu);
 // });
+latexMenu.addEventListener("click", (e) => {
+  scrollToReference(e, latexMenu);
+});
+fisicaMenu.addEventListener("click", (e) => {
+  scrollToReference(e, fisicaMenu);
+});
+algebraMenu.addEventListener("click", (e) => {
+  scrollToReference(e, algebraMenu);
+});
+geometriaMenu.addEventListener("click", (e) => {
+  scrollToReference(e, geometriaMenu);
+});
+trigonometriaMenu.addEventListener("click", (e) => {
+  scrollToReference(e, trigonometriaMenu);
+});
 contactMenu.addEventListener("click", (e) => {
   scrollToReference(e, contactMenu);
 });
@@ -99,8 +120,12 @@ contactMenu.addEventListener("click", (e) => {
 // const aboutMe = document.querySelectorAll(".aboutMe");
 // const proyects = document.querySelectorAll(".proyects");
 // const hability = document.querySelectorAll(".hability");
-const contact = document.querySelectorAll(".contact");
+const latex = document.querySelectorAll(".latex");
+const fisica = document.querySelectorAll(".fisica");
+const algebra = document.querySelectorAll(".algebra");
+const geometria = document.querySelectorAll(".geometria");
 const trigonometria = document.querySelectorAll(".trigonometria");
+const contact = document.querySelectorAll(".contact");
 
 // start.forEach((st) => {
 //   st.addEventListener("click", (e) => {
@@ -126,7 +151,25 @@ const trigonometria = document.querySelectorAll(".trigonometria");
 //   });
 // });
 
-contact.forEach((st) => {
+latex.forEach((st) => {
+  st.addEventListener("click", (e) => {
+    scrollDistance(e, st);
+  });
+});
+
+fisica.forEach((st) => {
+  st.addEventListener("click", (e) => {
+    scrollDistance(e, st);
+  });
+});
+
+algebra.forEach((st) => {
+  st.addEventListener("click", (e) => {
+    scrollDistance(e, st);
+  });
+});
+
+geometria.forEach((st) => {
   st.addEventListener("click", (e) => {
     scrollDistance(e, st);
   });
@@ -138,16 +181,24 @@ trigonometria.forEach((st) => {
   });
 });
 
+contact.forEach((st) => {
+  st.addEventListener("click", (e) => {
+    scrollDistance(e, st);
+  });
+});
+
+
+
 // Fixed Header
 
 const fixedHeader = document.getElementById("fixed-header");
 
 window.addEventListener("scroll", () => {
-  let offsetHeader = 750;
+  let offsetHeader = 0;
   if (window.scrollY >= offsetHeader) {
-    fixedHeader.style.marginTop = "0px";
+    fixedHeader.style.marginTop = "0.5rem";
   } else if (window.scrollY <= offsetHeader) {
-    fixedHeader.style.marginTop = "-90px";
+    fixedHeader.style.marginTop = "0.5rem";
   }
 });
 
@@ -162,13 +213,13 @@ particlesJS({
       },
     },
     color: {
-      value: "#fff",
+      value: "#F7FCFF",
     },
     shape: {
       type: "circle",
       stroke: {
         width: 0,
-        color: "#fff",
+        color: "#F7FCFF",
       },
       polygon: {
         nb_sides: 5,
@@ -180,7 +231,7 @@ particlesJS({
       },
     },
     opacity: {
-      value: 0.6,
+      value:0.1,
       random: false,
       anim: {
         enable: false,
