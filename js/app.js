@@ -276,14 +276,26 @@ particlesJS({
 });
 
 
-// bootom
+// bootom para redireccionar a un enlace externo
+// document.addEventListener('DOMContentLoaded', function() {
+//     var buttonLikeDivs = document.querySelectorAll('.content-background-art');
+//     buttonLikeDivs.forEach(function(div) {
+//         div.addEventListener('click', function() {
+//             var url = div.getAttribute('data-url');
+//             if (url) {
+//                 window.open(url, '_blank');
+//             }
+//         });
+//     });
+// });
+// bottom para redireccionar a un archivo html y url en el mismo proyecto
 document.addEventListener('DOMContentLoaded', function() {
     var buttonLikeDivs = document.querySelectorAll('.content-background-art');
     buttonLikeDivs.forEach(function(div) {
         div.addEventListener('click', function() {
             var url = div.getAttribute('data-url');
             if (url) {
-                window.open(url, '_blank');
+                window.location.href = url;
             }
         });
     });
