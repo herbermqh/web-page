@@ -182,10 +182,23 @@
                 });
 
                 // Agregar evento de clic para redirigir a Google Maps
+                <!-- mapElement.addEventListener('click', function() { -->
+                <!--     var url = `https://www.google.com/maps?q=${location.lat},${location.lng}`; -->
+                <!--     window.open(url, '_blank'); -->
+                <!-- }); -->
                 mapElement.addEventListener('click', function() {
-                    var url = `https://www.google.com/maps?q=${location.lat},${location.lng}`;
+                    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                    var url;
+
+                    if (/android/i.test(userAgent)) {
+                        url = `geo:${location.lat},${location.lng}`;
+                    } else {
+                        url = `https://www.google.com/maps?q=${location.lat},${location.lng}`;
+                    }
+
                     window.open(url, '_blank');
                 });
+
             } else {
                 console.error('Elemento no encontrado: ', location.id);
             }
