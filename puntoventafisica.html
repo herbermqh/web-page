@@ -186,18 +186,32 @@
                 <!--     var url = `https://www.google.com/maps?q=${location.lat},${location.lng}`; -->
                 <!--     window.open(url, '_blank'); -->
                 <!-- }); -->
+
                 mapElement.addEventListener('click', function() {
                     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
                     var url;
 
                     if (/android/i.test(userAgent)) {
-                        url = `geo:${location.lat},${location.lng}?q=${location.lat},${location.lng}(Label)`;
+                        url = `geo:${location.lat},${location.lng}?q=${location.lat},${location.lng}`;
                     } else {
                         url = `https://www.google.com/maps?q=${location.lat},${location.lng}`;
                     }
 
                     window.open(url, '_blank');
                 });
+                <!-- mapElement.addEventListener('click', function() { -->
+                <!--     var userAgent = navigator.userAgent || navigator.vendor || window.opera; -->
+                <!--     var url; -->
+
+                <!--     if (/android/i.test(userAgent)) { -->
+                <!--         url = `geo:${location.lat},${location.lng}?q=${location.lat},${location.lng}(Label)`; -->
+                <!--     } else { -->
+                <!--         url = `https://www.google.com/maps?q=${location.lat},${location.lng}`; -->
+                <!--     } -->
+
+                <!--     window.open(url, '_blank'); -->
+                <!-- }); -->
+
                 <!-- mapElement.addEventListener('click', function() { -->
                 <!--     var userAgent = navigator.userAgent || navigator.vendor || window.opera; -->
                 <!--     var url; -->
