@@ -120,42 +120,41 @@
         <li>
             <div class="sales-point-info">
                 <h2>Pangea</h2>
-                <p>Calle Falsa 123, Ciudad</p>
-                <p>Precio: $20</p>
+                <!-- <p>Calle Falsa 123, Ciudad</p> -->
+                <p>Precio: 67Bs</p>
             </div>
-            <a href="mailto:libreriaA@example.com" class="contact-button">Contactar</a>
+            <a class="contact-button" href="https://wa.me/59170187001">Contactar</a>
             <div id="map1" class="map"></div>
         </li>
         <li>
             <div class="sales-point-info">
                 <h2>Guarida del estudiante</h2>
-                <p>Avenida Siempre Viva 456, Ciudad</p>
-                <p>Precio: $22</p>
+                <p>Frente al mercado yungas</p>
+                <p>Precio: 65Bs</p>
             </div>
-            <a href="mailto:libreriaB@example.com" class="contact-button">Contactar</a>
+            <a href="https://wa.me/59160169727" class="contact-button">Contactar</a>
             <div id="map2" class="map"></div>
         </li>
         <li>
             <div class="sales-point-info">
                 <h2>Puesto 170</h2>
-                <p>Plaza Central, Ciudad</p>
-                <p>Precio: $18</p>
+                <p>Pasaje nuñez del prado</p>
+                <p>Precio: 60Bs</p>
             </div>
-            <a href="mailto:libreriaC@example.com" class="contact-button">Contactar</a>
+            <a class="contact-button" onclick="alert('No tiene contacto')">Contactar</a>
             <div id="map3" class="map"></div>
         </li>
         <li>
             <div class="sales-point-info">
                 <h2>Santa Cruz</h2>
-                <p>Plaza Central, Ciudad</p>
-                <p>Precio: $18</p>
+                <p>Academia Z</p>
+                <p>Precio: 65Bs</p>
             </div>
-            <a href="mailto:libreriaC@example.com" class="contact-button">Contactar</a>
+            <a href="https://wa.me/59176047631" class="contact-button">Contactar</a>
             <div id="santaCruz" class="map"></div>
         </li>
     </ul>
 </div>
-
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcwzxWWMcMAinqnc2lrm30Zx2UXMpil5s&callback=initMap"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -165,9 +164,9 @@
     function initMap() {
         var locations = [
             { id: 'map1', lat:-16.503441119556932,lng:-68.15010025193331},
-            { id: 'map2', lat: -34.407, lng: 150.654 },
-            { id: 'map3', lat: -34.387, lng: 150.634 },
-            { id: 'santaCruz', lat: -17.783, lng: -63.182 }
+            { id: 'map2', lat:-16.497235841879732 , lng:-68.12963766195355},
+            { id: 'map3', lat: -16.500302755345647, lng: -68.1326667097846 },
+            { id: 'santaCruz', lat:-17.77445240795989, lng: -63.19950338547611}
         ];
         locations.forEach(function(location) {
             var mapElement = document.getElementById(location.id);
@@ -204,6 +203,7 @@
       loopCount: false,
       showCursor: false,
     });
+
 
    particlesJS({
        particles: {
@@ -282,6 +282,21 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         // inicializar otras cosas
+
+
+    var buttonLikeDivs = document.querySelectorAll('.content-background-art');
+    buttonLikeDivs.forEach(function(div) {
+        div.addEventListener('click', function() {
+            var url = div.getAttribute('data-url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+
+
+
+
     });
 </script>
 
