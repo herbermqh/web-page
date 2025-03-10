@@ -275,7 +275,6 @@ particlesJS({
   retina_detect: true,
 });
 
-
 // bootom para redireccionar a un enlace externo
 // document.addEventListener('DOMContentLoaded', function() {
 //     var buttonLikeDivs = document.querySelectorAll('.content-background-art');
