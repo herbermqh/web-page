@@ -1,379 +1,785 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale= 1.0">
-  <link rel="icon" href="./recursos/logo.png">
-  <title>Heber MQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heber MQ | Libros Científicos, Curso LaTeX Avanzado y Editorial Matemática</title>
+  <meta name="description" content="Plataforma oficial de Heber Mamani Quispe (Heber MQ): Libro El Arte de Editar en LaTeX (639 págs.), Curso LaTeX Avanzado (27 módulos), Física Preuniversitaria y Plantillas Profesionales con pago integrado en Hotmart.">
+  <link rel="icon" href="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/logo.png">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Hotmart Official Checkout Widget -->
+  <link rel="stylesheet" type="text/css" href="https://static.hotmart.com/checkout/hotmart-fb.min.css">
+  <script src="https://static.hotmart.com/checkout/widget.min.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/23192939c8.js" crossorigin="anonymous"></script>
 </head>
-
-<body>
-  <div id="particles-js" class="animation"></div>
-
-  <!-- Header -->
-  <header id="header" class="header">
-    <!-- Mobile -->
-    <div class="menu-mobile">
-      <div>
-        <a id="btnMenu"><i class="fas fa-bars"></i></a>
+<body class="math-grid-bg antialiased selection:bg-sky-500 selection:text-slate-950">
+  <!-- Barra Superior de Anuncio / Hotmart Oficial -->
+  <div class="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 border-b border-sky-500/20 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 text-slate-200">
+        <span class="px-2 py-0.5 rounded bg-orange-500 text-white font-bold text-[10px] uppercase tracking-wider">Hotmart Oficial</span>
+        <span>Libro <strong>El Arte de Editar en LaTeX (639 págs.)</strong> + Plantillas <code class="font-mono-code text-sky-300">artbook</code> y <code class="font-mono-code text-sky-300">artapa7</code> con <strong>60% de descuento</strong>.</span>
       </div>
-
-      <nav class="menu-side">
-        <!-- <a id="start-menu" href="#inicio">Inicio</a> -->
-        <!-- <a id="about-me-menu" href="#latex">LaTeX</a> -->
-        <!-- <a id="proyects-menu" href="#proyectos">Proyectos</a> -->
-        <!-- <a id="hability-menu" href="#habilidades">Habilidades</a> -->
-        <a id="latex-menu" href="#latex">LaTeX</a>
-        <a id="fisica-menu" href="#fisica">Fisica</a>
-        <a id="algebra-menu" href="#endesarrollo">Algebra</a>
-        <a id="geometria-menu" href="#endesarrollo">Geometría</a>
-        <a id="trigonometria-menu" href="#endesarrollo">Trigonometría</a>
-        <a id="contact-menu" href="#contacto">Contacto</a>
+      <div class="flex items-center gap-4">
+        <button type="button" onclick="openHotmartCheckout('libro-latex')" class="text-amber-400 hover:text-amber-300 font-bold underline">
+          Comprar por <span data-usd="32">$32.00 USD</span> &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Header Fijo -->
+  <header id="header" class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <!-- Marca -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <img src="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/logo.png" alt="Logo Heber MQ" class="w-10 h-10 rounded-xl object-contain bg-slate-900 p-1 border border-slate-700 group-hover:border-sky-400 transition">
+        <div>
+          <span class="font-heading font-extrabold text-lg tracking-tight text-white block leading-none">HEBER <span class="text-sky-400">MQ</span></span>
+          <span class="text-[11px] text-slate-400 font-mono-code block mt-0.5">Editorial Científica &amp; LaTeX</span>
+        </div>
+      </a>
+      <!-- Enlaces de Navegación Desktop -->
+      <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold text-slate-300">
+        <a href="#libros" class="px-3 py-2 rounded-lg hover:bg-slate-800/80 hover:text-sky-400 transition">Libros Publicados</a>
+        <a href="#capitulos-latex" class="px-3 py-2 rounded-lg hover:bg-slate-800/80 hover:text-sky-400 transition">19 Capítulos LaTeX</a>
+        <a href="#curso-latex" class="px-3 py-2 rounded-lg hover:bg-slate-800/80 hover:text-sky-400 transition flex items-center gap-1.5">
+          <span>Curso LaTeX Avanzado</span>
+          <span class="px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 text-[10px] border border-sky-500/30">27 Módulos</span>
+        </a>
+        <a href="#proyectos-latex" class="px-3 py-2 rounded-lg hover:bg-slate-800/80 hover:text-sky-400 transition">Plantillas y Proyectos</a>
+        <a href="#puntos-venta" class="px-3 py-2 rounded-lg hover:bg-slate-800/80 hover:text-sky-400 transition">Puntos de Venta (Bolivia)</a>
+        <a href="#proximos" class="px-3 py-2 rounded-lg hover:bg-slate-800/80 hover:text-sky-400 transition">En Desarrollo</a>
       </nav>
+      <!-- Controles Derecha: Moneda, Tema y Botón Hotmart -->
+      <div class="flex items-center gap-2">
+        <label for="currencySelector" class="sr-only">Seleccionar moneda</label>
+        <select id="currencySelector" onchange="setCurrency(this.value)" class="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-2.5 py-2 focus:outline-none focus:border-sky-400">
+          <option value="USD">USD ($)</option>
+          <option value="BOB">BOB (Bs)</option>
+          <option value="PEN">PEN (S/)</option>
+          <option value="MXN">MXN ($)</option>
+          <option value="COP">COP ($)</option>
+          <option value="CLP">CLP ($)</option>
+          <option value="EUR">EUR (€)</option>
+        </select>
+        <button type="button" onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-sky-400 text-xs flex items-center gap-1.5" title="Cambiar tema claro/oscuro">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+          <span id="themeToggleLabel" class="hidden xl:inline">Modo Claro</span>
+        </button>
+        <button type="button" onclick="openHotmartCheckout('libro-latex')" class="px-3.5 py-2 rounded-xl btn-hotmart font-bold text-xs flex items-center gap-1.5 shadow">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Comprar (Hotmart)</span>
+        </button>
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200" aria-label="Abrir menú móvil">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </div>
-
-    <!-- <!-1- Escritorio - fijo -1-> -->
-    <div id="fixed-header" class="header-fixed">
-      <ul>
-        <!-- <li><a class="start" href="#inicio">Inicio</a></li> -->
-        <!-- <li><a class="aboutMe" href="#latex">LaTeX</a></li> -->
-        <!-- <li><a class="proyects" href="#proyectos">Proyectos</a></li> -->
-        <!-- <li><a class="hability" href="#habilidades">Habilidades</a></li> -->
-        <!-- <li><a class="contact" href="#contacto">Contacto</a></li> -->
-        <li><a class="latex" href="#latex">LaTeX</a></li>
-        <li><a class="fisica" href="#fisica">Fisica</a></li>
-        <li><a class="algebra" href="#endesarrollo">Algebra</a></li>
-        <li><a class="geometria" href="#endesarrollo">Geometría</a></li>
-        <li><a class="trigonometria" href="#endesarrollo">Trigonometría</a></li>
-        <li><a class="contact" href="#contacto">Contacto</a></li>
-      </ul>
+    <!-- Menú Móvil -->
+    <div id="mobileNavDrawer" class="hidden lg:hidden border-t border-slate-800 bg-slate-950/95 px-4 py-3 space-y-1 text-sm">
+      <a href="#libros" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">Libros Publicados</a>
+      <a href="#capitulos-latex" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">Índice de 19 Capítulos (LaTeX)</a>
+      <a href="#curso-latex" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-sky-400 font-semibold hover:bg-slate-800">Curso LaTeX Avanzado (27 Módulos Integrados)</a>
+      <a href="#proyectos-latex" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">Plantillas y Proyectos LaTeX</a>
+      <a href="#puntos-venta" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">Puntos de Venta Física en Bolivia</a>
+      <a href="#proximos" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800">Próximos Libros (Álgebra, Geometría, Trigonometría)</a>
     </div>
-
-    <!-- Escritorio -->
-    <!-- <ul id="header-container" class="header-container"> -->
-    <!--   <!-1- <li><a class="start" href="#inicio">Inicio</a></li> -1-> -->
-    <!--   <!-1- <li><a class="aboutMe" href="#latex">LaTeX</a></li> -1-> -->
-    <!--   <!-1- <li><a class="proyects" href="#proyectos">Proyectos</a></li> -1-> -->
-    <!--   <!-1- <li><a class="hability" href="#habilidades">Habilidades</a></li> -1-> -->
-    <!--   <li><a class="contact" href="#latex">LaTeX</a></li> -->
-    <!--   <li><a class="contact" href="#fisica">Fisica</a></li> -->
-    <!--   <li><a class="contact" href="#algebra">Algebra</a></li> -->
-    <!--   <li><a class="contact" href="#geometria">Geometría</a></li> -->
-    <!--   <li><a class="contact" href="#trigonometria">Trigonometría</a></li> -->
-    <!--   <li><a class="contact" href="#contacto">Contacto</a></li> -->
-    <!-- </ul> -->
-
   </header>
-  <!-- Hero -->
-  <section id="inicio" class="hero">
-    <div class="hero-container">
-      <h6>&#160;<span class="typed"></span></h6>
-      <!-- <h1>¡Hola! -->
-      <!-- <span class="hero-span">Junior Front End developer</span> y me gusta -->
-      <!-- <span class="hero-styles" id="likes"></span> -->
-      <!-- </h1> -->
-    </div>
-    <div>
-      <div class="skew"></div>
-    </div>
-    <!-- <ul class="icons-container"> -->
-    <!--   <li><a href="./recursos/CV - Jose Andres Garcia Montes.pdf" download="CV - Jose Andres Garcia Montes">Resume <i -->
-    <!--         class="fas fa-file-export"></i></li></a> -->
-    <!--   <li><a href="https://github.com/Gorusuke" target="_blank">Github <i class="fab fa-github-square"></i></li></a> -->
-    <!--   <li><a href="https://www.linkedin.com/in/jose-andres-garcia/" target="_blank">LinkedIn <i -->
-    <!--         class="fab fa-linkedin"></i></li></a> -->
-    <!-- </ul> -->
-  </section>
-
-  <!-- LaTeX -->
-  <!-- <section id="latex" class="about-me"> -->
-  <!--   <h2>LaTeX</h2> -->
-  <!--   <div class="about-me-container"> -->
-  <!--     <div class="about-img-container"> -->
-  <!--       <img src="https://imagenes-pages.s3-sa-east-1.amazonaws.com/foto3.jpg" alt="Foto-perfil"/> -->
-  <!--     </div> -->
-  <!--     <div class="about-text-container"> -->
-  <!--       <h2>¡Hola! <span>👋🏻</span></h2> -->
-  <!--       <p> -->
-  <!--         Mi nombre es <span>José Andrés García.</span> Como muchos, me sentí atraido por el mundo de la programación y empecé a dedicar mi tiempo libre a investigar como funciona la tecnología. Me propuse como meta aprender de manera autodidacta, por tanto busqué recursos en internet de forma libre y gratuita y comencé mi ruta de estudios. Así descubrí el desarrollo <span>Front End.</span> -->
-  <!--       </p> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </section> -->
-
-  <!-- Proyectos -->
-  <section id="latex" class="proyectos">
-    <h2>LaTeX</h2>
-    <div class="proyectos-container">
-      <article data-aos="zoom-in" class="proyecto">
-        <div class="proyecto-img-container">
-          <img src="./recursos/portadalatex.png" alt="Slide-page" />
-        </div>
-        <div class="proyecto-description">
-          <div class="proyecto-content">
-            <h2>LaTeX</h2>
-            <ul class="proyecto-habilities">
-              <li>El arte de editar en LaTeX</li>
-            </ul>
+  <main>
+    <!-- ====================================================================
+         1. HERO PRINCIPAL + DEMO INTERACTIVA DE LATEX EN VIVO
+         ==================================================================== -->
+    <section id="inicio" class="relative py-12 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <!-- Columna Izquierda: Propuesta de Valor Editorial -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Heber Mamani Quispe (Heber MQ) · Autor y Editor de Textos Científicos</span>
           </div>
-          <div class="proyecto-back">
-            <p>
-              LaTeX es un sistema de composición tipográfica ampliamente utilizado para la creación de documentos
-              científicos, técnicos y académicos de alta calidad.
-            </p>
-            <p>
-              Una vez que hayas asimilado el contenido de este libro, estarás preparado para crear obras similares a las
-              de las editoriales más prestigiosas, como Pearson, McGraw-Hill, Cengage y otras reconocidas en el ámbito
-              académico.
-            </p>
+          <h1 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.12]">
+            Domina el Arte de Editar Libros Científicos con <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-amber-400">LaTeX y Física</span>
+          </h1>
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+            Todo el ecosistema académico de <strong>Heber MQ</strong> ahora integrado en un solo lugar: el libro <em>El Arte de Editar en LaTeX</em> (639 páginas), el <strong>Curso LaTeX Avanzado</strong> con sus 27 módulos, las plantillas profesionales <code class="font-mono-code text-sky-300">artbook</code> y <code class="font-mono-code text-sky-300">artapa7</code>, y el libro <em>Física Preuniversitaria</em>.
+          </p>
+          <!-- Botones de Acción Principal -->
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <button type="button" onclick="openHotmartCheckout('libro-latex')" class="px-6 py-3.5 rounded-xl btn-hotmart font-bold text-sm flex items-center gap-2 shadow-xl">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              <span>Adquirir Libro LaTeX (<span data-usd="32">$32.00 USD</span> en Hotmart)</span>
+            </button>
+            <a href="#curso-latex" class="px-5 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-white font-bold text-sm flex items-center gap-2 transition">
+              <i class="fa-solid fa-graduation-cap text-sky-400"></i>
+              <span>Explorar Curso LaTeX (27 Módulos)</span>
+            </a>
+            <a href="#puntos-venta" class="px-4 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold text-sm flex items-center gap-2 transition">
+              <i class="fa-solid fa-location-dot text-emerald-400"></i>
+              <span>Puntos de Venta en Bolivia</span>
+            </a>
+          </div>
+          <!-- Métricas Reales del Ecosistema -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+            <div class="rounded-xl bg-slate-900/75 border border-slate-800 p-3.5">
+              <span class="font-heading text-2xl font-extrabold text-sky-400 block">639</span>
+              <span class="text-xs text-slate-400">Páginas en el Libro de LaTeX</span>
+            </div>
+            <div class="rounded-xl bg-slate-900/75 border border-slate-800 p-3.5">
+              <span class="font-heading text-2xl font-extrabold text-amber-400 block">27</span>
+              <span class="text-xs text-slate-400">Módulos del Curso Avanzado</span>
+            </div>
+            <div class="rounded-xl bg-slate-900/75 border border-slate-800 p-3.5">
+              <span class="font-heading text-2xl font-extrabold text-emerald-400 block">2 Bonus</span>
+              <span class="text-xs text-slate-400">Plantillas artbook &amp; artapa7</span>
+            </div>
+            <div class="rounded-xl bg-slate-900/75 border border-slate-800 p-3.5">
+              <span class="font-heading text-2xl font-extrabold text-orange-400 block">7 Días</span>
+              <span class="text-xs text-slate-400">Garantía Oficial Hotmart</span>
+            </div>
           </div>
         </div>
-      </article>
-      <article>
-        <div class="proyecto-links">
-          <div class="content-background-art"
-            data-url="https://drive.google.com/file/d/1-wBLqUnkaLPyAfUePsydOlxa78VmuwS0/view?usp=drive_link">
-            <a href="https://drive.google.com/file/d/1-wBLqUnkaLPyAfUePsydOlxa78VmuwS0/view?usp=drive_link"
-              target="_blank"><i class="fas fa-book"></i></a>
-            <p>Contenido del libro</p>
-          </div>
-          <!-- <div class="content-background-art" -->
-          <!--   data-url="https://drive.google.com/file/d/1U5xhRy28DgPGOAtbOJbKhV5lysaG6vIN/view?usp=sharing"> -->
-          <!--   <a href="https://drive.google.com/file/d/1U5xhRy28DgPGOAtbOJbKhV5lysaG6vIN/view?usp=sharing" -->
-          <!--     target="_blank"><i class="fas fa-code"></i></a> -->
-          <!--   <p>Resumen de código (curso en UTO)</p> -->
-          <!-- </div> -->
-          <div class="content-background-art" data-url="https://hebermq.kpages.online/info?">
-            <a href="https://hebermq.kpages.online/info?" target="_blank">
-              <i class="fas fa-info"></i>
-            </a>
-            <p>Más información</p>
-          </div>
-          <!-- comprar libro -->
-          <div class="content-background-art" data-url="https://app.takenos.com/pay/55e3f47c-19a4-4016-b2a4-cf371719ef6a">
-            <a href="https://app.takenos.com/pay/55e3f47c-19a4-4016-b2a4-cf371719ef6a" target="_blank">
-              <i class="fas fa-shopping-cart"></i>
-            </a>
-            <p>Comprar libro (32USD)</p>
-          </div>
-          <!-- <div class="content-background-art" data-url="https://wa.me/59163152441"> -->
-          <!--   <a href="https://wa.me/59163152441" target="_blank"> -->
-          <!--     <i class="fas fa-shopping-cart"></i> -->
-          <!--   </a> -->
-          <!--   <p>Comprar libro en Bolivia</p> -->
-          <!-- </div> -->
-          <!-- curso de latex -->
-          <div class="content-background-art"
-            data-url="https://sites.google.com/view/cursolatexavanzado/p%C3%A1gina-principal">
-            <a href="https://sites.google.com/view/cursolatexavanzado/p%C3%A1gina-principal" target="_blank">
-              <i class="fas fa-info"></i>
-            </a>
-            <p>Curso de LaTeX</p>
-          </div>
-          <!-- proyectos latex -->
-          <div class="content-background-art" data-url="https://sites.google.com/view/proyectos-latex/trabajo">
-            <a href="https://sites.google.com/view/proyectos-latex/trabajo" target="_blank">
-              <i class="fas fa-info"></i>
-            </a>
-            <p>Proyectos LaTeX</p>
-          </div>
-      </article>
-    </div>
-  </section>
-  <section id="fisica" class="proyectos">
-    <h2>Física</h2>
-    <div class="proyectos-container">
-      <article data-aos="zoom-in" class="proyecto">
-        <div class="proyecto-img-container">
-          <img src="./recursos/portadafisica.png" alt="Slide-page" />
-        </div>
-        <div class="proyecto-description">
-          <div class="proyecto-content">
-            <h2>Física preuniversitaria</h2>
-            <ul class="proyecto-habilities">
-              <li>El arte de resolver problemas</li>
-            </ul>
-          </div>
-          <div class="proyecto-back">
-            <p>
-              <!-- LaTeX es un sistema de composición tipográfica ampliamente utilizado para la creación de documentos científicos, técnicos y académicos de alta calidad. -->
-            </p>
-            <p>
-              <!-- Una vez que hayas asimilado el contenido de este libro, estarás preparado para crear obras similares a las de las editoriales más prestigiosas, como Pearson, McGraw-Hill, Cengage y otras reconocidas en el ámbito académico. -->
-            </p>
+        <!-- Columna Derecha: Simulador Interactivo de Maquetación LaTeX -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl glass-panel p-5 border border-sky-500/30">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                <span id="heroDemoTitle" class="text-xs font-mono-code text-slate-300 ml-1">Caja de Teorema con tcolorbox</span>
+              </div>
+              <button type="button" onclick="copyLatexDemoCode()" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-sky-300 text-[11px] font-mono-code flex items-center gap-1 transition">
+                <i class="fa-regular fa-copy"></i> Copiar .tex
+              </button>
+            </div>
+            <!-- Pestañas de demostración -->
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <button type="button" data-demo="tcolorbox" onclick="switchHeroDemo('tcolorbox')" class="hero-demo-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-slate-950 transition">
+                1. Teorema (tcolorbox)
+              </button>
+              <button type="button" data-demo="tikz" onclick="switchHeroDemo('tikz')" class="hero-demo-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition">
+                2. Física Vectorial (TikZ)
+              </button>
+              <button type="button" data-demo="chapter" onclick="switchHeroDemo('chapter')" class="hero-demo-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition">
+                3. Capítulo (artbook)
+              </button>
+            </div>
+            <!-- Código Fuente .tex -->
+            <div class="rounded-xl bg-slate-950 border border-slate-800/90 p-3.5 mb-3 overflow-x-auto">
+              <pre id="heroDemoCode" class="text-xs font-mono-code text-sky-300 leading-relaxed m-0 whitespace-pre-wrap"></pre>
+            </div>
+            <!-- Vista Previa Compilada -->
+            <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center justify-between">
+              <span>Resultado Tipográfico Compilado:</span>
+              <span class="text-emerald-400 font-mono-code">PDF / LuaLaTeX OK</span>
+            </div>
+            <div id="heroDemoPreview"></div>
           </div>
         </div>
-      </article>
-      <article>
-        <div class="proyecto-links">
-          <div class="content-background-art"
-            data-url="https://drive.google.com/file/d/1kZQ_d68zK0Y2PDb7u4X05rgLbsiZqfQw/view?usp=drive_link">
-            <a href="https://drive.google.com/file/d/1kZQ_d68zK0Y2PDb7u4X05rgLbsiZqfQw/view?usp=drive_link"
-              target="_blank"><i class="fas fa-book"></i></a>
-            <p>Contenido del libro</p>
-          </div>
-<!-- <a href="./puntoventafisica.html" target="_blank"> -->
-<!--   <div class="content-background-art"> -->
-<!--     <i class="fas fa-shopping-cart"></i> -->
-<!--     <p>Puntos de venta en Bolivia</p> -->
-<!--   </div> -->
-<!-- </a> -->
-          <div class="content-background-art" data-url="./puntoventafisica.html">
-            <a href="./puntoventafisica.html">
-              <i class="fas fa-shopping-cart"></i>
-            </a>
-            <p>Puntos de venta en Bolivia</p>
-          </div>
-          <!-- <div class="content-background-art" data-url="https://wa.me/59163152441"> -->
-          <!--   <a href="https://wa.me/59163152441" target="_blank"> -->
-          <!--     <i class="fas fa-shopping-cart"></i> -->
-          <!--   </a> -->
-          <!--   <p>Puntos de venta en Bolivia</p> -->
-          <!-- </div> -->
-          <div class="content-background-art" data-url="https://wa.me/59163152441">
-            <a href="https://wa.me/59163152441" target="_blank">
-              <i class="fas fa-shopping-cart"></i>
-            </a>
-            <p>Comprar libro en Bolivia</p>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- separator -->
-  <section>
-    <div class="separator"></div>
-  </section>
-  <!-- <section class="proyectos"> -->
-  <!--   <h2>Proyectos en desarrollo</h2> -->
-  <!--   <div id="algebra" class="proyectos-container"> -->
-  <!--     <article data-aos="zoom-in" class="proyecto"> -->
-  <!--       <div class="proyecto-img-container"> -->
-  <!--         <img src="./recursos/portadaalgebra.png" alt="Slide-page" /> -->
-  <!--       </div> -->
-  <!--       <div class="proyecto-description"> -->
-  <!--         <div class="proyecto-content"> -->
-  <!--           <h2>Álgebra</h2> -->
-  <!--           <ul class="proyecto-habilities"> -->
-  <!--             <li>El arte de resolver problemas</li> -->
-  <!--           </ul> -->
-  <!--         </div> -->
-  <!--         <!-1- <div class="proyecto-back"> -1-> -->
-  <!--         <!-1-   <p> -1-> -->
-  <!--         <!-1-   </p> -1-> -->
-  <!--         <!-1-   <p> -1-> -->
-  <!--         <!-1-   </p> -1-> -->
-  <!--         <!-1- </div> -1-> -->
-  <!--       </div> -->
-  <!--     </article> -->
-  <!--     <article data-aos="zoom-in" class="proyecto"> -->
-  <!--       <div class="proyecto-img-container"> -->
-  <!--         <img src="./recursos/portadageometria.png" alt="Slide-page" /> -->
-  <!--       </div> -->
-  <!--       <div class="proyecto-description"> -->
-  <!--         <div class="proyecto-content"> -->
-  <!--           <h2>Geometría</h2> -->
-  <!--           <ul class="proyecto-habilities"> -->
-  <!--             <li>El arte de resolver problemas</li> -->
-  <!--           </ul> -->
-  <!--         </div> -->
-  <!--         <div class="proyecto-back"> -->
-  <!--           <p> -->
-  <!--           </p> -->
-  <!--           <p> -->
-  <!--           </p> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </article> -->
-  <!--     <article id="trigonometria" data-aos="zoom-in" class="proyecto"> -->
-  <!--       <div class="proyecto-img-container"> -->
-  <!--         <img src="./recursos/portadatrigonometria.png" alt="Slide-page" /> -->
-  <!--       </div> -->
-  <!--       <div class="proyecto-description"> -->
-  <!--         <div class="proyecto-content"> -->
-  <!--           <h2>Trigonometría</h2> -->
-  <!--           <ul class="proyecto-habilities"> -->
-  <!--             <li>El arte de resolver problemas</li> -->
-  <!--           </ul> -->
-  <!--         </div> -->
-  <!--         <div class="proyecto-back"> -->
-  <!--           <p> -->
-  <!--           </p> -->
-  <!--           <p> -->
-  <!--           </p> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </article> -->
-  <!--   </div> -->
-  <!-- </section> -->
-
-  <!-- Habilidades -->
-  <section id="endesarrollo" class="habilidades">
-    <h2>Proyectos en desarrollo</h2>
-    <div class="habilidades-container">
-      <div data-aos="fade-up" data-aos-duration="300" class="technologies">
-        <div class="technologies-image">
-          <img src="recursos/portadaalgebra.png" alt="algebra">
-        </div>
-        <h4>Álgebra</h4>
       </div>
-      <div data-aos="fade-up" data-aos-duration="600" class="technologies">
-        <div class="technologies-image">
-          <img src="recursos/portadageometria.png" alt="geometria">
+    </section>
+    <!-- ====================================================================
+         2. CATÁLOGO DE OBRAS PUBLICADAS (CON CHECKOUT HOTMART INTEGRADO)
+         ==================================================================== -->
+    <section id="libros" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-sky-400 block mb-2">Catálogo Editorial Oficial</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Libros Publicados por Heber MQ</h2>
         </div>
-        <h4>Geometría</h4>
+        <p class="text-sm text-slate-300 max-w-md">
+          Adquiere la edición digital inmediata mediante <strong>Hotmart</strong> o consulta los puntos de venta de ejemplares impresos en Bolivia.
+        </p>
       </div>
-      <div data-aos="fade-up" data-aos-duration="900" class="technologies">
-        <div class="technologies-image">
-          <img src="recursos/portadatrigonometria.png" alt="trigonometria">
-        </div>
-        <h4>Trigonometría</h4>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- LIBRO 1: EL ARTE DE EDITAR EN LATEX -->
+        <article class="rounded-3xl glass-panel p-6 sm:p-8 border border-sky-500/30 flex flex-col justify-between">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+            <!-- Portada -->
+            <div class="sm:col-span-5 flex flex-col items-center">
+              <div class="relative">
+                <span class="absolute -top-3 -left-3 z-10 px-3 py-1 rounded-full bg-orange-500 text-white font-extrabold text-xs shadow-lg">
+                  -60% en Hotmart
+                </span>
+                <img src="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/portadalatex.png" alt="Portada El Arte de Editar en LaTeX - Heber MQ" class="w-48 sm:w-full max-w-[220px] h-auto rounded-xl book-cover-3d">
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-xs text-amber-400 font-semibold">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-slate-300">639 Páginas · 19 Capítulos</span>
+              </div>
+            </div>
+            <!-- Detalles del Libro -->
+            <div class="sm:col-span-7 space-y-4">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30">Edición Completa</span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-500/20 text-orange-300 border border-orange-500/30">Hotmart ID: L77490587I</span>
+              </div>
+              <h3 class="font-heading text-2xl font-extrabold text-white leading-snug">
+                El Arte de Editar en LaTeX: <span class="text-sky-400">Escribe tu propio libro de Ciencias</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Guía exhaustiva paso a paso desde la estructura básica hasta el diseño de paquetes <code class="font-mono-code text-sky-300">.sty</code>, clases <code class="font-mono-code text-sky-300">.cls</code>, gráficos con <strong>TikZ</strong>, <strong>Asymptote</strong> y cajas con <strong>tcolorbox</strong>.
+              </p>
+              <!-- Beneficios Incluidos -->
+              <ul class="space-y-1.5 text-xs text-slate-200">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span><strong>Plantilla prediseñada de libro</strong> (<code class="font-mono-code text-sky-300">artbook</code>) incluida gratis</span></li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span><strong>Plantilla bajo normas APA 7</strong> (<code class="font-mono-code text-sky-300">artapa7</code>) incluida gratis</span></li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span><strong>3 meses de consultas directas</strong> con el autor Heber MQ</span></li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span>Ejemplos explicados detalladamente y secretos de diseño editorial</span></li>
+              </ul>
+              <!-- Precio -->
+              <div class="pt-2 flex items-baseline gap-3">
+                <span data-usd="32" class="font-heading text-3xl font-extrabold text-amber-400">$32.00 USD</span>
+                <span data-usd="80" class="text-sm text-slate-400 line-through">$80.00 USD</span>
+                <span class="text-xs text-emerald-400 font-semibold">Entrega inmediata</span>
+              </div>
+            </div>
+          </div>
+          <!-- Botonera Integrada del Libro de LaTeX -->
+          <div class="mt-6 pt-5 border-t border-slate-800/90 space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <button type="button" onclick="openHotmartCheckout('libro-latex')" class="py-3 px-4 rounded-xl btn-hotmart font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+                <span>Comprar con Hotmart (<span data-usd="32">$32.00 USD</span>)</span>
+              </button>
+              <a href="#capitulos-latex" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                <i class="fa-solid fa-list-ol text-sky-400"></i>
+                <span>Ver los 19 Capítulos Aquí</span>
+              </a>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+              <a href="https://drive.google.com/file/d/1-wBLqUnkaLPyAfUePsydO1xa78VmuwS0/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition">
+                <i class="fa-regular fa-file-pdf text-rose-400 mr-1"></i> Ver Índice en PDF (Drive)
+              </a>
+              <a href="https://drive.google.com/file/d/1RsEaQtRlWX5rHDhcxPiWQZEMXVWcCf6h/view" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition">
+                <i class="fa-regular fa-eye text-amber-400 mr-1"></i> Ver Muestra del Libro (Drive)
+              </a>
+              <a href="https://app.takenos.com/pay/55e3f47c-19a4-4016-b2a4-cf371719ef6a" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition">
+                <i class="fa-solid fa-credit-card text-sky-400 mr-1"></i> Opción Takenos
+              </a>
+            </div>
+          </div>
+        </article>
+        <!-- LIBRO 2: FÍSICA PREUNIVERSITARIA -->
+        <article id="fisica" class="rounded-3xl glass-panel p-6 sm:p-8 border border-emerald-500/30 flex flex-col justify-between">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+            <!-- Portada -->
+            <div class="sm:col-span-5 flex flex-col items-center">
+              <div class="relative">
+                <span class="absolute -top-3 -left-3 z-10 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-xs shadow-lg">
+                  Edición Bolivia
+                </span>
+                <img src="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/portadafisica.png" alt="Portada Física Preuniversitaria - Heber MQ" class="w-48 sm:w-full max-w-[220px] h-auto rounded-xl book-cover-3d">
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-xs text-emerald-400 font-semibold">
+                <i class="fa-solid fa-atom"></i>
+                <span class="text-slate-300">Maquetado 100% en LaTeX + TikZ</span>
+              </div>
+            </div>
+            <!-- Detalles del Libro -->
+            <div class="sm:col-span-7 space-y-4">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Física Preuniversitaria</span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">La Paz y Santa Cruz</span>
+              </div>
+              <h3 class="font-heading text-2xl font-extrabold text-white leading-snug">
+                Física Preuniversitaria: <span class="text-emerald-400">Teoría y Problemas Selectos</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Obra diseñada para postulantes a facultades de ingeniería y ciencias exactas. Combina rigor conceptual, diagramas de cuerpo libre vectoriales de alta precisión y métodos estratégicos de resolución.
+              </p>
+              <ul class="space-y-1.5 text-xs text-slate-200">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span>Disponible en librerías de <strong>La Paz</strong> (Pangea, Guarida del Estudiante, Puesto 70)</span></li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span>Disponible en <strong>Santa Cruz de la Sierra</strong> (Academia Z)</span></li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span>Envíos directos a todo el país vía WhatsApp oficial del autor</span></li>
+              </ul>
+              <div class="pt-2 flex items-baseline gap-3">
+                <span class="font-heading text-3xl font-extrabold text-emerald-400">60 – 67 Bs</span>
+                <span class="text-xs text-slate-400">Puntos de venta autorizados en Bolivia</span>
+              </div>
+            </div>
+          </div>
+          <!-- Botonera del Libro de Física -->
+          <div class="mt-6 pt-5 border-t border-slate-800/90 space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <a href="#puntos-venta" class="py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Ver Puntos de Venta y Mapa</span>
+              </a>
+              <a href="https://wa.me/59163152441?text=Hola%20Heber%2C%20deseo%20comprar%20el%20libro%20de%20F%C3%ADsica%20Preuniversitaria" target="_blank" rel="noopener noreferrer" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i>
+                <span>Pedir por WhatsApp (+591 63152441)</span>
+              </a>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+              <a href="https://drive.google.com/file/d/1kZQ_d68zK0Y2PDb7u4X05rgLbsiZqfQw/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">
+                <i class="fa-regular fa-file-pdf text-rose-400 mr-1"></i> Descargar Muestra e Índice en PDF (Google Drive)
+              </a>
+              <button type="button" onclick="openHotmartCheckout('libro-fisica')" class="text-emerald-400 hover:underline font-semibold">
+                Opciones de pago en línea / QR &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
-  <!-- Contacto -->
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <div class="contacto-container">
-      <div class="contacto-icons">
-        <a href="mailto:herbermqh.com">
+    </section>
+    <!-- ====================================================================
+         3. EXPLORADOR NATIVO DE LOS 19 CAPÍTULOS DEL LIBRO DE LATEX
+         ==================================================================== -->
+    <section id="capitulos-latex" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl glass-panel p-6 sm:p-8 border border-slate-800">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <i class="fas fa-envelope"></i>
-            <p>Email</p>
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-1">Contenido Integrado de "El Arte de Editar en LaTeX"</span>
+            <h3 class="font-heading text-2xl font-extrabold text-white">Explora los 19 Capítulos y 639 Páginas del Libro</h3>
           </div>
-        </a>
-        <a href="https://www.facebook.com/hebermqh" target="_blank">
-          <div>
-            <i class="fab fa-facebook"></i>
-            <p>Facebook</p>
+          <div class="relative w-full md:w-80">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="chapterSearchInput" type="search" placeholder="Buscar capítulo (ej. TikZ, tablas, clases)..." class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-sky-400">
           </div>
-        </a>
-        <a href="https://wa.me/59163152441" target="_blank">
-          <div>
-            <i class="fab fa-whatsapp"></i>
-            <p>WhatsApp</p>
-          </div>
-        </a>
+        </div>
+        <div id="bookChaptersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
       </div>
-    </div>
-  </section>
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <p>Todos los derechos reservados &#169 <span id="year"></span></p>
+    </section>
+    <!-- ====================================================================
+         4. CURSO LATEX AVANZADO INTEGRADO NATIVAMENTE (ANTES EN GOOGLE SITES)
+         ==================================================================== -->
+    <section id="curso-latex" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl glass-panel p-6 sm:p-10 border border-sky-500/40">
+        <!-- Encabezado del Curso -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-8 mb-8 border-b border-slate-800">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="inline-flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-500 text-slate-950">Programa Completo Integrado</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-sky-300 border border-slate-700">
+                <i class="fa-solid fa-chalkboard-user mr-1"></i> Google Classroom + Sesiones de Dudas
+              </span>
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">
+              Curso <span class="latex-logo text-sky-400">L<sup>A</sup>T<sub>E</sub>X</span> Avanzado: De Cero a Creador de Plantillas y Libros Comerciales
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Todo el programa que antes consultabas en Google Sites ahora está integrado directamente aquí. Aprende en modalidad <strong>asincrónica con clases grabadas en Google Classroom</strong>, espacio permanente de preguntas y respuestas con <strong>Heber MQ</strong>, y domina desde la estructura de libros de más de 1,000 páginas hasta el análisis de maquetación de editoriales como <em>McGraw-Hill</em> y <em>Pearson</em>.
+            </p>
+            <!-- Tarjetas de Modalidad y Bonus Incluidos -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5">
+                <span class="text-xs font-bold text-sky-400 block mb-1"><i class="fa-solid fa-video mr-1"></i> Modalidad Flexible</span>
+                <p class="text-xs text-slate-300">Clases grabadas en Google Classroom a tu propio ritmo + sesiones en vivo de consultas.</p>
+              </div>
+              <div class="rounded-xl bg-slate-900/90 border border-amber-500/30 p-3.5">
+                <span class="text-xs font-bold text-amber-400 block mb-1"><i class="fa-solid fa-gift mr-1"></i> Bonus #1: Plantilla artbook</span>
+                <p class="text-xs text-slate-300">Plantilla profesional lista para maquetar y publicar tu propio libro científico o técnico.</p>
+              </div>
+              <div class="rounded-xl bg-slate-900/90 border border-emerald-500/30 p-3.5">
+                <span class="text-xs font-bold text-emerald-400 block mb-1"><i class="fa-solid fa-gift mr-1"></i> Bonus #2: Plantilla artapa7</span>
+                <p class="text-xs text-slate-300">Plantilla configurada bajo normas APA 7ma edición para tesis, tesinas y artículos.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Tarjeta Lateral de Inscripción Rápida al Curso -->
+          <div class="lg:col-span-4">
+            <div class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-sky-500/40 p-6 shadow-2xl space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Inscripción Abierta</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300">Acceso Permanente</span>
+              </div>
+              <div>
+                <span class="text-xs text-slate-400 block">Inversión del Curso Completo (27 Módulos):</span>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span data-usd="45" class="font-heading text-3xl font-extrabold text-white">$45.00 USD</span>
+                  <span data-usd="95" class="text-sm text-slate-400 line-through">$95.00 USD</span>
+                </div>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-300">
+                <li><i class="fa-solid fa-check text-sky-400 mr-1.5"></i> 27 módulos prácticos paso a paso</li>
+                <li><i class="fa-solid fa-check text-sky-400 mr-1.5"></i> Incluye plantillas <code class="font-mono-code">artbook</code> y <code class="font-mono-code">artapa7</code></li>
+                <li><i class="fa-solid fa-check text-sky-400 mr-1.5"></i> Soporte directo en Google Classroom</li>
+              </ul>
+              <button type="button" onclick="openHotmartCheckout('curso-latex')" class="w-full py-3.5 px-4 rounded-xl btn-hotmart font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+                <span>Inscribirme al Curso con Hotmart</span>
+              </button>
+              <button type="button" onclick="openHotmartCheckout('pack-editorial')" class="w-full py-2.5 px-4 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 border border-sky-500/40 text-sky-300 font-bold text-xs text-center transition">
+                Ver Pack Libro + Curso (<span data-usd="64">$64.00 USD</span>)
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Controles de Filtrado y Búsqueda de los 27 Módulos -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-cat="all" onclick="setCourseCategory('all')" class="course-cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 shadow transition">
+              Todos los Módulos (27)
+            </button>
+            <button type="button" data-cat="fundamentos" onclick="setCourseCategory('fundamentos')" class="course-cat-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800/90 text-slate-300 hover:bg-slate-700 transition">
+              1. Fundamentos y Libros +1000 págs (1–6)
+            </button>
+            <button type="button" data-cat="editorial" onclick="setCourseCategory('editorial')" class="course-cat-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800/90 text-slate-300 hover:bg-slate-700 transition">
+              2. TikZ, tcolorbox y Diseño Editorial (7–16)
+            </button>
+            <button type="button" data-cat="graficos" onclick="setCourseCategory('graficos')" class="course-cat-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800/90 text-slate-300 hover:bg-slate-700 transition">
+              3. Tablas, Matemáticas y Gráficas (17–22)
+            </button>
+            <button type="button" data-cat="clases" onclick="setCourseCategory('clases')" class="course-cat-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800/90 text-slate-300 hover:bg-slate-700 transition">
+              4. Creación de Clases .cls/.sty y TeX (23–27)
+            </button>
+          </div>
+          <div class="relative w-full lg:w-72">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="courseSearchInput" type="search" placeholder="Filtrar dentro de los 27 módulos..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-sky-400">
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-400 mb-4">
+          <span id="courseModulesCount">Mostrando 27 de 27 módulos oficiales</span>
+          <a href="https://sites.google.com/view/cursolatexavanzado/contenido-del-curso" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400">
+            Respaldo en Google Sites &rarr;
+          </a>
+        </div>
+        <!-- Grid de los 27 Módulos -->
+        <div id="courseModulesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+    </section>
+    <!-- ====================================================================
+         5. GALERÍA NATIVA DE PLANTILLAS Y PROYECTOS LATEX
+         ==================================================================== -->
+    <section id="proyectos-latex" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-sky-400 block mb-2">Repositorio de Plantillas, Paquetes .sty y Maquetación</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Proyectos y Plantillas <span class="latex-logo">L<sup>A</sup>T<sub>E</sub>X</span></h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" data-filter="all" onclick="setProjectFilter('all')" class="project-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 transition">Todos (6)</button>
+          <button type="button" data-filter="plantilla" onclick="setProjectFilter('plantilla')" class="project-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Plantillas de Libros y APA 7</button>
+          <button type="button" data-filter="paquete" onclick="setProjectFilter('paquete')" class="project-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Paquetes (.sty)</button>
+          <button type="button" data-filter="beamer" onclick="setProjectFilter('beamer')" class="project-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Presentaciones Beamer</button>
+          <button type="button" data-filter="servicio" onclick="setProjectFilter('servicio')" class="project-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Servicio de Maquetación</button>
+        </div>
+      </div>
+      <div id="latexProjectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+    <!-- ====================================================================
+         6. PUNTOS DE VENTA DE FÍSICA EN BOLIVIA INTEGRADOS (ANTES puntoventafisica.html)
+         ==================================================================== -->
+    <section id="puntos-venta" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl glass-panel p-6 sm:p-10 border border-emerald-500/30">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-2">Localizador Integrado · Libro Física Preuniversitaria</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Puntos de Venta Autorizados en Bolivia</h2>
+            <p class="text-sm text-slate-300 mt-1">Selecciona tu ciudad o librería para ver el precio exacto en Bolivianos, ubicación en el mapa y contacto directo por WhatsApp.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-city="all" onclick="setCityFilter('all')" class="city-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 transition">Todas las Ciudades (4)</button>
+            <button type="button" data-city="La Paz" onclick="setCityFilter('La Paz')" class="city-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">La Paz (3)</button>
+            <button type="button" data-city="Santa Cruz" onclick="setCityFilter('Santa Cruz')" class="city-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Santa Cruz de la Sierra (1)</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Lista de Librerías -->
+          <div id="salesPointsList" class="lg:col-span-6 space-y-4"></div>
+          <!-- Visor de Mapa Interactivo de la Sucursal Seleccionada -->
+          <div class="lg:col-span-6">
+            <div class="rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-xl">
+              <div class="p-5 border-b border-slate-800 flex items-center justify-between gap-3">
+                <div>
+                  <span class="text-[11px] font-mono-code uppercase text-emerald-400 block">Punto de Venta Seleccionado</span>
+                  <h4 id="mapPointTitle" class="font-heading text-xl font-bold text-white">Librería Pangea (La Paz)</h4>
+                  <p id="mapPointAddress" class="text-xs text-slate-300 mt-0.5">Centro de La Paz</p>
+                  <span id="mapPointCoords" class="text-[11px] font-mono-code text-slate-400">Lat: -16.4977618 · Lng: -68.1304588</span>
+                </div>
+                <div class="text-right">
+                  <span id="mapPointPrice" class="text-2xl font-extrabold text-amber-400 block">67 Bs</span>
+                  <span class="text-[11px] text-slate-400">Ejemplar físico</span>
+                </div>
+              </div>
+              <div class="relative w-full h-72 bg-slate-900">
+                <iframe id="mapPointIframe" title="Mapa del punto de venta en Bolivia" src="https://www.openstreetmap.org/export/embed.html?bbox=-68.1354588%2C-16.5007618%2C-68.1254588%2C-16.4947618&amp;layer=mapnik&amp;marker=-16.4977618%2C-68.1304588" class="w-full h-full border-0" loading="lazy"></iframe>
+              </div>
+              <div class="p-4 bg-slate-900/90 flex flex-wrap items-center justify-between gap-3">
+                <a id="mapPointWhatsappLink" href="https://wa.me/59170187001" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition">
+                  <i class="fa-brands fa-whatsapp mr-1.5"></i> Consultar Stock por WhatsApp
+                </a>
+                <a id="mapPointExternalLink" href="https://www.google.com/maps?q=-16.4977618,-68.1304588" target="_blank" rel="noopener noreferrer" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-300 font-semibold text-xs transition">
+                  <i class="fa-solid fa-diamond-turn-right mr-1"></i> Cómo llegar (Google Maps)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====================================================================
+         7. COLECCIÓN MATEMÁTICA EN DESARROLLO (ÁLGEBRA, GEOMETRÍA, TRIGONOMETRÍA)
+         ==================================================================== -->
+    <section id="proximos" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-2">Próximos Lanzamientos Editoriales</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mb-3">Colección Matemática Preuniversitaria en Desarrollo</h2>
+        <p class="text-sm text-slate-300">
+          Obras actualmente en etapa de composición y revisión tipográfica en <span class="latex-logo">L<sup>A</sup>T<sub>E</sub>X</span>. Regístrate en la lista prioritaria para recibir capítulos de muestra gratuitos y descuento de lanzamiento.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- ÁLGEBRA -->
+        <div class="rounded-3xl glass-panel p-6 border border-slate-800 flex flex-col justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">En Maquetación LaTeX</span>
+              <span class="text-xs font-mono-code text-slate-400">Avance: 75%</span>
+            </div>
+            <div class="flex justify-center my-4">
+              <img src="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/portadaalgebra.png" alt="Portada Libro Álgebra - Heber MQ" class="w-44 h-auto rounded-xl book-cover-3d">
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white text-center mt-4 mb-2">Álgebra Preuniversitaria</h3>
+            <p class="text-xs text-slate-300 text-center leading-relaxed mb-4">
+              Teoría de exponentes, polinomios, factorización, ecuaciones, matrices, determinantes, números complejos y logaritmos con problemas propuestos y resueltos.
+            </p>
+          </div>
+          <button type="button" onclick="reserveUpcomingBook('Álgebra Preuniversitaria')" class="w-full py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bell"></i> Unirme a la Lista Prioritaria (Álgebra)
+          </button>
+        </div>
+        <!-- GEOMETRÍA -->
+        <div class="rounded-3xl glass-panel p-6 border border-slate-800 flex flex-col justify-between hover:border-sky-500/40 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30">Ilustración TikZ / Asymptote</span>
+              <span class="text-xs font-mono-code text-slate-400">Avance: 65%</span>
+            </div>
+            <div class="flex justify-center my-4">
+              <img src="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/portadageometria.png" alt="Portada Libro Geometría - Heber MQ" class="w-44 h-auto rounded-xl book-cover-3d">
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white text-center mt-4 mb-2">Geometría Plana y del Espacio</h3>
+            <p class="text-xs text-slate-300 text-center leading-relaxed mb-4">
+              Congruencia y semejanza de triángulos, circunferencia, puntos notables, áreas, poliedros y geometría analítica con trazos vectoriales de alta precisión.
+            </p>
+          </div>
+          <button type="button" onclick="reserveUpcomingBook('Geometría Plana y del Espacio')" class="w-full py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bell"></i> Unirme a la Lista Prioritaria (Geometría)
+          </button>
+        </div>
+        <!-- TRIGONOMETRÍA -->
+        <div class="rounded-3xl glass-panel p-6 border border-slate-800 flex flex-col justify-between hover:border-emerald-500/40 transition">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">En Desarrollo Editorial</span>
+              <span class="text-xs font-mono-code text-slate-400">Avance: 60%</span>
+            </div>
+            <div class="flex justify-center my-4">
+              <img src="https://raw.githubusercontent.com/herbermqh/web-page/main/recursos/portadatrigonometria.png" alt="Portada Libro Trigonometría - Heber MQ" class="w-44 h-auto rounded-xl book-cover-3d">
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white text-center mt-4 mb-2">Trigonometría Analítica</h3>
+            <p class="text-xs text-slate-300 text-center leading-relaxed mb-4">
+              Sistemas de medición angular, circunferencia trigonométrica, identidades, transformaciones, funciones inversas y resolución de figuras oblicuángulas.
+            </p>
+          </div>
+          <button type="button" onclick="reserveUpcomingBook('Trigonometría Analítica')" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bell"></i> Unirme a la Lista Prioritaria (Trigonometría)
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- ====================================================================
+         8. SECCIÓN DE CONTACTO DIRECTO Y AUTORÍA
+         ==================================================================== -->
+    <section id="contacto" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl glass-panel p-8 sm:p-10 border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Contacto Directo con el Autor</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white">¿Tienes dudas sobre los libros, el Curso LaTeX Avanzado o un proyecto editorial?</h2>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Comunícate directamente con <strong>Heber Mamani Quispe (Heber MQ)</strong> para soporte de compras en Hotmart, envíos de libros físicos en Bolivia o cotización de servicios de maquetación científica.
+          </p>
+        </div>
+        <div class="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end">
+          <a href="https://wa.me/59163152441" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>WhatsApp Oficial (+591 63152441)</span>
+          </a>
+          <a href="https://www.facebook.com/hebermqh" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 transition">
+            <i class="fa-brands fa-facebook text-lg"></i>
+            <span>Facebook (@hebermqh)</span>
+          </a>
+          <a href="mailto:herbermqh@gmail.com" class="px-5 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 transition">
+            <i class="fa-solid fa-envelope text-lg"></i>
+            <span>Correo (herbermqh@gmail.com)</span>
+          </a>
+          <a href="https://github.com/herbermqh" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm flex items-center gap-2 transition">
+            <i class="fa-brands fa-github text-lg"></i>
+            <span>GitHub (herbermqh)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Pie de Página -->
+  <footer class="border-t border-slate-800/80 py-8 px-4 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; <span id="currentYear">2026</span> <strong>Heber Mamani Quispe (Heber MQ)</strong>. Todos los derechos reservados.</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="https://pay.hotmart.com/L77490587I" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400 transition">Hotmart Checkout Oficial</a>
+        <a href="https://github.com/herbermqh/web-page" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition">Repositorio GitHub</a>
+        <a href="https://wa.me/59163152441" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">Soporte WhatsApp</a>
+      </div>
     </div>
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- ======================================================================
+       MODAL DE CHECKOUT Y PASARELA DE PAGOS HOTMART INTEGRADA
+       ====================================================================== -->
+  <div id="hotmartCheckoutModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 overflow-y-auto">
+    <div class="relative w-full max-w-4xl rounded-3xl glass-panel border border-orange-500/40 p-6 sm:p-8 my-8 shadow-2xl">
+      <!-- Cabecera del Modal -->
+      <div class="flex items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-lg">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+          </span>
+          <div>
+            <h3 class="font-heading text-xl font-extrabold text-white">Centro de Pagos e Inscripción — Heber MQ &amp; Hotmart</h3>
+            <p class="text-xs text-slate-400">Selecciona tu libro o curso y completa tu compra segura con entrega inmediata</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeHotmartCheckout()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center" aria-label="Cerrar pasarela">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Columna Izquierda: Selección de Producto y Moneda -->
+        <div class="lg:col-span-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">1. Elige tu Producto o Pack</span>
+            <label for="modalCurrencySelector" class="sr-only">Moneda en el checkout</label>
+            <select id="modalCurrencySelector" onchange="setCurrency(this.value)" class="bg-slate-900 border border-slate-700 text-sky-300 text-xs font-bold rounded-lg px-2 py-1">
+              <option value="USD">USD ($)</option>
+              <option value="BOB">BOB (Bs)</option>
+              <option value="PEN">PEN (S/)</option>
+              <option value="MXN">MXN ($)</option>
+              <option value="COP">COP ($)</option>
+              <option value="CLP">CLP ($)</option>
+              <option value="EUR">EUR (€)</option>
+            </select>
+          </div>
+          <button type="button" data-prod="libro-latex" onclick="selectCheckoutProduct('libro-latex')" class="checkout-prod-option w-full text-left p-3 rounded-xl border-2 border-orange-500 bg-orange-500/10 transition flex items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold text-white block">Libro El Arte de Editar en LaTeX</span>
+              <span class="text-[11px] text-slate-400">639 págs + Plantillas artbook y artapa7</span>
+            </div>
+            <span data-usd="32" class="text-sm font-extrabold text-amber-400 whitespace-nowrap">$32.00 USD</span>
+          </button>
+          <button type="button" data-prod="curso-latex" onclick="selectCheckoutProduct('curso-latex')" class="checkout-prod-option w-full text-left p-3 rounded-xl border border-slate-800 bg-slate-900/70 hover:border-slate-700 transition flex items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold text-white block">Curso LaTeX Avanzado (27 Módulos)</span>
+              <span class="text-[11px] text-slate-400">Google Classroom + Plantillas + Soporte</span>
+            </div>
+            <span data-usd="45" class="text-sm font-extrabold text-sky-400 whitespace-nowrap">$45.00 USD</span>
+          </button>
+          <button type="button" data-prod="pack-editorial" onclick="selectCheckoutProduct('pack-editorial')" class="checkout-prod-option w-full text-left p-3 rounded-xl border border-slate-800 bg-slate-900/70 hover:border-slate-700 transition flex items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold text-white block">Pack Integral (Libro + Curso 27 Módulos)</span>
+              <span class="text-[11px] text-emerald-400">Todo el ecosistema + Mentoría 3 meses</span>
+            </div>
+            <span data-usd="64" class="text-sm font-extrabold text-emerald-400 whitespace-nowrap">$64.00 USD</span>
+          </button>
+          <button type="button" data-prod="libro-fisica" onclick="selectCheckoutProduct('libro-fisica')" class="checkout-prod-option w-full text-left p-3 rounded-xl border border-slate-800 bg-slate-900/70 hover:border-slate-700 transition flex items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold text-white block">Libro Física Preuniversitaria</span>
+              <span class="text-[11px] text-slate-400">Ejemplar en Bolivia (60–67 Bs) / Envío</span>
+            </div>
+            <span data-usd="9.5" class="text-sm font-extrabold text-amber-400 whitespace-nowrap">$9.50 USD</span>
+          </button>
+          <!-- Cupón de Descuento -->
+          <div class="pt-2">
+            <label for="checkoutCouponInput" class="text-[11px] text-slate-400 block mb-1">¿Tienes un cupón de descuento? (Prueba: <code class="text-amber-300">HEBERMQ</code>)</label>
+            <div class="flex gap-2">
+              <input id="checkoutCouponInput" type="text" placeholder="Código de cupón" class="flex-1 px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white uppercase">
+              <button type="button" onclick="applyCheckoutCoupon()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-300 text-xs font-bold">Aplicar</button>
+            </div>
+          </div>
+        </div>
+        <!-- Columna Derecha: Resumen y Métodos de Pago (Hotmart, Takenos, QR Bolivia) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="rounded-2xl bg-slate-900/90 border border-slate-800 p-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span id="checkoutSelectedBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-orange-500/20 text-orange-300 border border-orange-500/30">Bestseller en Hotmart</span>
+              <span id="checkoutSelectedCode" class="text-xs font-mono-code text-slate-400">ID Hotmart: L77490587I</span>
+            </div>
+            <h4 id="checkoutSelectedTitle" class="font-heading text-lg font-bold text-white mb-3">Libro "El Arte de Editar en LaTeX"</h4>
+            <ul id="checkoutSelectedIncludes" class="space-y-1.5 mb-4"></ul>
+            <div class="pt-3 border-t border-slate-800 flex items-baseline justify-between">
+              <span class="text-xs text-slate-400">Total a pagar hoy:</span>
+              <div class="flex items-baseline gap-2">
+                <span id="checkoutSelectedOldPrice" class="text-xs text-slate-500 line-through">$80.00 USD</span>
+                <span id="checkoutSelectedPrice" class="font-heading text-2xl font-extrabold text-amber-400">$32.00 USD</span>
+              </div>
+            </div>
+          </div>
+          <!-- Selector de Pasarela -->
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">2. Elige tu Método de Pago Preferido</span>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <button type="button" data-method="hotmart-embed" onclick="selectPaymentMethod('hotmart-embed')" class="pay-method-tab flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-orange-500 text-white shadow transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-fire-flame-curved"></i> Hotmart Checkout
+              </button>
+              <button type="button" data-method="bolivia-qr" onclick="selectPaymentMethod('bolivia-qr')" class="pay-method-tab flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-qrcode text-emerald-400"></i> QR Bolivia (Bs)
+              </button>
+              <button type="button" data-method="takenos" onclick="selectPaymentMethod('takenos')" class="pay-method-tab flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-globe text-sky-400"></i> Takenos USD
+              </button>
+            </div>
+            <div id="checkoutPaymentActionArea"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ======================================================================
+       MODAL DE LISTA PRIORITARIA (PRÓXIMOS LIBROS EN DESARROLLO)
+       ====================================================================== -->
+  <div id="waitlistModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
+    <div class="w-full max-w-md rounded-3xl glass-panel border border-amber-500/40 p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300">Reserva Prioritaria</span>
+        <button type="button" onclick="closeWaitlistModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center" aria-label="Cerrar ventana">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <h3 class="font-heading text-xl font-extrabold text-white">Notificarme del lanzamiento de <span id="waitlistBookName" class="text-amber-400">Álgebra</span></h3>
+      <p class="text-xs text-slate-300">Recibe el primer capítulo en PDF apenas salga de imprenta y un cupón de descuento exclusivo para estudiantes.</p>
+      <form onsubmit="submitWaitlistForm(event)" class="space-y-3">
+        <div>
+          <label for="waitlistUserName" class="text-xs text-slate-300 block mb-1">Tu nombre completo</label>
+          <input id="waitlistUserName" type="text" required placeholder="Ej. Carlos Mendoza" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+        </div>
+        <div>
+          <label for="waitlistUserEmail" class="text-xs text-slate-300 block mb-1">Tu correo electrónico o WhatsApp</label>
+          <input id="waitlistUserEmail" type="text" required placeholder="ejemplo@correo.com o +591 ..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition">
+          Registrarme en la Lista de Lanzamiento
+        </button>
+      </form>
+      <div class="pt-2 border-t border-slate-800 text-center">
+        <a id="waitlistWhatsappLink" href="https://wa.me/59163152441" target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 hover:underline font-semibold">
+          <i class="fa-brands fa-whatsapp mr-1"></i> O solicitar reserva directamente por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Notificación Toast Flotante -->
+  <div id="appToast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 rounded-2xl bg-slate-900 border border-sky-500/50 px-4 py-3 shadow-2xl flex items-center gap-2.5 text-xs font-semibold text-white">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="appToastMsg">Listo</span>
+  </div>
   <script src="./js/app.js"></script>
 </body>
-
 </html>
